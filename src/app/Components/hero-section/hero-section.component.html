@@ -76,49 +76,20 @@
         <!-- products -->
 
          <!-- 1 product -->
-        <div class="flex flex-col gap-3">
-         <div>
-          <img class="w-[18rem]" src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/coffee-asorted-400x400.jpg" alt="">
-         </div>
-         <div class="flex flex-col justify-center items-center gap-2">
-          <p class="text-gray-400">Groceries</p>
-          <h2 class="font-semibold text-[19px] font-serif">Assorted Coffee</h2>
-          <p>£35.00</p>
-         </div>
-         </div>
-            <!-- 2-product -->
-        <div class="flex flex-col gap-3">
-         <div>
-          <img class="w-[18rem]" src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/sanitizer-400x400.jpg" alt="">
-         </div>
-         <div class="flex flex-col justify-center items-center gap-2">
-          <p class="text-gray-400">Groceries</p>
-          <h2 class="font-semibold text-[19px] font-serif">Hand Sanitizer</h2>
-          <p>£15.00</p>
-         </div>
-      </div>
-      <!-- 3 - Product -->
-      <div class="flex flex-col gap-3">
-        <div>
-         <img class="w-[18rem]" src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/red-chillies-400x400.jpg" alt="">
-        </div>
-        <div class="flex flex-col justify-center items-center gap-2">
-         <p class="text-gray-400">Groceries</p>
-         <h2 class="font-semibold text-[19px] font-serif">Handpicked Red Chillies</h2>
-         <p>£19.00</p>
-        </div>
-     </div>
-     <!--4  - Product -->
-     <div class="flex flex-col gap-3">
-      <div>
-       <img class="w-[18rem]" src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2018/06/edible-oil-400x400.jpg" alt="">
-      </div>
-      <div class="flex flex-col justify-center items-center gap-2">
-       <p class="text-gray-400">Groceries</p>
-       <h2 class="font-semibold text-[19px] font-serif">Natural Extracted Edible Oil</h2>
-       <p>£34.00</p>
-      </div>
-   </div>
+          @for (item of productData; track $index) {
+            <div class="flex flex-col gap-3">
+              <div>
+               <img (click)="getData(item)" class="w-[18rem] cursor-pointer" [src]="item.imgurl" alt="">
+              </div>
+              <div class="flex flex-col justify-center items-center gap-2">
+               <p class="text-gray-400">Groceries</p>
+               <h2 class="font-semibold text-[19px] font-serif">{{item.name}}</h2>
+               <p>£35.00</p>
+              </div>
+              </div>
+          }
+       
+
 
     </div>
     </div>
@@ -180,12 +151,12 @@
   </div>
 </div>
 <div class="py-10">
-<div class="  flex flex-wrap justify-between px-20 border border-blue-900  h-40 items-center bg-black text-white">
+<div class="  flex flex-wrap justify-between px-20 border border-blue-900  w-full h-40 items-center bg-black text-white">
   <div class="md:w-fit w-full">
-    <h1 class="md:text-4xl w-full  text-center  text-xl font-bold font-mono">
+    <h1 class="md:text-4xl  text-center  text-xl font-bold font-mono">
       Get 25% Off On Your First Purchase!</h1>
   </div>
-  <div class="w-full flex justify-center">
+  <div class=" sm:w-fit w-full flex justify-center">
     <button class="rounded-lg text-start  p-3 w-fit bg-[#5a9418] text-white">
       Shop Now</button>
   </div>
@@ -254,45 +225,71 @@
 
 
 <!-- Review section -->
- <div class="max-w-full py-20 min-h-screen pt-24 bg-white">
-  <div class="max-w-full min-h-screen flex flex-col gap-16 justify-center items-center">
+ <div class="max-w-full py-20 min-h-screen  bg-white">
+  <div class="max-w-full min-h-screen flex flex-col justify-center items-center   ">
     <div class="flex flex-col justify-center items-center gap-5">
       <h1 class="text-4xl font-bold font-serif">Customers Reviews</h1>
       <img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/logo-leaf-new.png" alt="">
     </div>
-    <div class="flex sm:flex sm:flex-row flex-col  gap-5 justify-center items-center w-full ">
-      <div class="shadow-lg rounded-md p-10 max-w-xs flex flex-col gap-5 justify-center items-center bg-white ">
-        <p>Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-        <div class="flex justify-center items-center gap-4"><img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/client02-free-img.png" alt=""> <p>Mila Kunis</p></div>
-      </div>
-      <div class="lg:max-w-sm max-w-full relative  bg-black/65 h-full bg-white ">
-        <div class="absolute w-full  h-full  flex flex-col gap-24 justify-center items-center text-white ">
-          <div class="   w-[94%] h-[94%] bg-black/55 hover:bg-black/80 flex flex-col justify-center items-center gap-10 text-white">
-          <div class="flex flex-col justify-center gap-3 items-center">
-          <h1 class="text-4xl font-serif max-w-xs font-bold gap-2 text-center">
-            Deal Of The Day <br> 15% Off On All Vegetables!</h1>
-          <p class="   text-center">I am text block. Click edit button to <br> change this tex em ips.</p>
-        </div>
-        <div>
-          <button class="rounded-lg text-start p-3 w-fit bg-[#5a9418] text-white">
-            Shop Now</button>
+    <div class=" flex items-center justify-center min-h-screen p-5">
+      <div class="max-w-6xl w-full">
+          <!-- Main Container -->
+          <div class="flex flex-col md:flex-row items-baseline gap-5">
+              <!-- Left Review Card -->
+              <div class="shadow-lg rounded-md p-10 lg:max-w-xs md:max-w-sm w-full h-full flex flex-col gap-5 justify-center items-center bg-white">
+                  <div class="text-yellow-500 flex">
+                      ⭐⭐⭐⭐⭐
+                  </div>
+                  <p class="text-center text-gray-600">
+                      Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                  </p>
+                  <div class="flex items-center gap-3">
+                      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mila Kunis" class="w-12 h-12 rounded-full">
+                      <span class="text-gray-700 font-semibold">Mila Kunis</span>
+                  </div>
+              </div>
+    
+              <!-- Middle Featured Deal Card -->
+              <div class="relative shadow-lg rounded-md p-10 w-full md:max-w-sm flex flex-col justify-center items-center text-center bg-cover bg-center text-white h-full lg:h-[60vh] group"
+              style="background-image: url('https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/sydney-rae-668606-unsplash.jpg');">
+             
+             <!-- Overlay Effect -->
+             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-all duration-300 rounded-md"></div>
+         
+             <!-- Content -->
+             <div class="relative z-10 flex flex-col justify-center items-center">
+                 <h2 class="text-2xl font-bold">Deal Of The Day</h2>
+                 <p class="text-xl font-semibold">15% Off On All Vegetables!</p>
+                 <p class="text-sm mt-2">I am text block. Click edit button to change this text.</p>
+                 <button class="mt-5 bg-green-500 text-white px-5 py-2 rounded-md flex items-center gap-2">
+                     SHOP NOW →
+                 </button>
+             </div>
+         
+         </div>
+         
+    
+              <!-- Right Review Card -->
+              <div class="shadow-lg rounded-md p-10 lg:max-w-xs md:max-w-sm w-full h-full flex flex-col gap-5 justify-center items-center bg-white">
+                  <div class="text-yellow-500 flex">
+                      ⭐⭐⭐⭐⭐
+                  </div>
+                  <p class="text-center text-gray-600">
+                      Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                  <div class="flex items-center gap-3">
+                      <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike Sendler" class="w-12 h-12 rounded-full">
+                      <span class="text-gray-700 font-semibold">Mike Sendler</span>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-        <div class="">
-          <img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/06/sydney-rae-668606-unsplash.jpg" class=" sm:max-w-sm max-w-full p-3 min-h-[40vh] sm:min-h-[65vh] rounded-sm" alt="">
-        </div>
-        </div>
-        <div class="shadow-lg rounded-md p-10 max-w-xs flex flex-col gap-5 justify-center items-center bg-white ">
-          <p>Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-          <div class="flex justify-center items-center gap-4"><img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2019/07/client01-free-img.png" alt=""> <p>Mila Kunis</p></div>
-        </div>
     </div>
   </div>
  </div>
  <!-- Review End section -->
 
- <div class="flex  flex-wrap justify-center  gap-10 items-center w-full  h-fit">
+ <div class="flex  flex-wrap justify-center  gap-10 items-center w-full p-10 h-fit">
   <div><h2 class="text-3xl">Featured Brands:</h2></div>
    <div><img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-1.svg" alt=""></div>
    <div><img src="https://websitedemos.net/organic-shop-02/wp-content/uploads/sites/465/2021/03/logo-3.svg" alt=""></div>
